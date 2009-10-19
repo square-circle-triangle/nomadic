@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "nomadic"
-    gem.summary = %Q{Library to detect mobile browsers}
-    gem.description = %Q{Library to detect mobile browsers}
+    gem.summary = %Q{Mobile browser detection library for Ruby}
+    gem.description = %Q{Mobile browser detection library for Ruby}
     gem.email = "steve@seven.net.nz"
     gem.homepage = "http://github.com/steveh/nomadic"
     gem.authors = ["Steve Hoeksema"]
