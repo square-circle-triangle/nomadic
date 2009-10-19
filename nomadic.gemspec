@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/nomadic.rb",
+     "nomadic.gemspec",
      "spec/nomadic_spec.rb",
      "spec/spec_helper.rb"
   ]
