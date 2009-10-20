@@ -2,17 +2,12 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Nomadic" do
 
-  before do
-    ENV["HTTP_USER_AGENT"] = nil
-    ENV["HTTP_ACCEPT"] = nil
-    ENV["HTTP_X_WAP_PROFILE"] = nil
-  end
-
   describe "user agent detection" do
 
     def should_detect_agent(expectation, user_agent)
-      ENV["HTTP_USER_AGENT"] = user_agent
-      Nomadic.mobile?.should == expectation
+      env = { "HTTP_USER_AGENT" => user_agent }
+
+      Nomadic.mobile?(env).should == expectation
     end
 
     it "should detect iPhones and iPod Touch's" do
@@ -53,15 +48,15 @@ describe "Nomadic" do
   describe "other header detection" do
 
     it "should detect WAP HTTP ACCEPT headers" do
-      ENV['HTTP_ACCEPT'] = "text/vnd.wap.wml"
+      env = { "HTTP_ACCEPT" => "text/vnd.wap.wml" }
 
-      Nomadic.mobile?.should == :wap_accept
+      Nomadic.mobile?(env).should == :wap_accept
     end
 
     it "should detect WAP PROFILE headers" do
-      ENV['HTTP_X_WAP_PROFILE'] = "http://uaprof.vtext.com/lg/vx4500/vx4500.xml"
+      env = { "HTTP_X_WAP_PROFILE" => "http://uaprof.vtext.com/lg/vx4500/vx4500.xml" }
 
-      Nomadic.mobile?.should == :wap_profile
+      Nomadic.mobile?(env).should == :wap_profile
     end
 
   end

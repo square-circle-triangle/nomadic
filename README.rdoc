@@ -5,6 +5,14 @@ Mobile browser detection library for Ruby
 Adapted from Wikipedia: http://en.wikipedia.org/wiki/List_of_user_agents_for_mobile_phones
 and zytrax.com: http://www.zytrax.com/tech/web/mobile_ids.html
 
+== Usage
+
+if Nomadic.mobile?(request.env)
+  # action for mobile agents
+else
+  # action for non-mobile agents
+end
+
 == Note on Patches/Pull Requests
 
 * Fork the project.
