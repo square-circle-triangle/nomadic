@@ -2,6 +2,8 @@ class Nomadic
 
   def self.mobile?(env)
     case env['HTTP_USER_AGENT']
+      when /(ipad)/i then return nil
+
       when /(ipod|iphone)/i then return :iphone
       when /android/i then return :android
       when /opera mini/i then return :opera

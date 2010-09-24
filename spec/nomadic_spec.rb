@@ -6,13 +6,17 @@ describe "Nomadic" do
 
     def should_detect_agent(expectation, user_agent)
       env = { "HTTP_USER_AGENT" => user_agent }
-
       Nomadic.mobile?(env).should == expectation
     end
 
     it "should detect iPhones and iPod Touch's" do
       should_detect_agent(:iphone, "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/1A542a Safari/419.3")
       should_detect_agent(:iphone, "Mozila/5.0 (iPod; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/3A101a Safari/419.3")
+    end
+    
+    it "should reject iPad's" do
+      env = { "HTTP_USER_AGENT" => "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B367 Safari/531.21.10" }
+      Nomadic.mobile?(env).should == nil
     end
 
     it "should detect Android handset" do
